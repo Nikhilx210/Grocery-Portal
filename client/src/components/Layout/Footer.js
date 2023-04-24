@@ -3,9 +3,9 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='bg-dark text-light p-3'>
-      <h4 className='text-center'>
+      <h5 className='text-center'>
         All Right Reserved &copy; BuyFresh
-      </h4>
+      </h5>
     </div>
   )
 }
