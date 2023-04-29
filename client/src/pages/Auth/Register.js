@@ -11,15 +11,16 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
+  const [answer, setAnswer] = useState('');
   const navigate = useNavigate()
   //form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const name = Fname + Lname;
-      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, { name, email, password, address, phone })
+      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, { name, email, password, address, phone ,answer })
       if (res && res.data.success) {
-        toast.success(res.data.message);
+        // toast.success(res.data.message);
         navigate('/login');
       } else {
         toast.error(res.data.message);
@@ -60,18 +61,25 @@ const Register = () => {
               setPassword(event.target.value);
             }} value={password} required className="form-control" id="inputPassword4" placeholder="Password" />
           </div>
+          <div className="col-md-6">
+            <label htmlFor="inputPhoneNo" className="form-label">Phone No :</label>
+            <input type="tel" onChange={(event) => {
+              setPhone(event.target.value);
+            }} value={phone} required className="form-control" id="inputAddress2" placeholder="+91" />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputQuestion" className="form-label">What is your Favourite Fruit :</label>
+            <input type="text" onChange={(event) => {
+              setAnswer(event.target.value);
+            }} value={answer} required className="form-control" id="inputQuestion" placeholder="Favourite Fruit" />
+          </div>
           <div className="col-12">
             <label htmlFor="inputAddress" className="form-label">Address :</label>
             <input type="text" onChange={(event) => {
               setAddress(event.target.value);
             }} value={address} required className="form-control" id="inputAddress" placeholder="Address" />
           </div>
-          <div className="col-12">
-            <label htmlFor="inputPhoneNo" className="form-label">Phone No :</label>
-            <input type="tel" onChange={(event) => {
-              setPhone(event.target.value);
-            }} value={phone} required className="form-control" id="inputAddress2" placeholder="+91" />
-          </div>
+          
           {/* <div className="col-md-6">
             <label htmlFor="inputCity" className="form-label">City</label>
             <input type="text" className="form-control" id="inputCity" />
