@@ -10,6 +10,7 @@ export default function PrivateRoute(){
         const authCheck =async()=>{
             const res=await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/user-auth`)
             if(res.data.ok){
+                console.log("admin")
                 setOk(true);
             }else{
                 setOk(false);
@@ -19,6 +20,6 @@ export default function PrivateRoute(){
             authCheck();
         }
     },[auth?.token])
-
+    // [auth?.token]
     return ok?<Outlet /> :<Spinner/>
 }
