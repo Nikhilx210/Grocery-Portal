@@ -1,0 +1,122 @@
+/* ===================================
+========= register page  */
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    flex-direction: column;
+    padding: 20%;
+    background-color: #ffdee9;
+    background-image: linear-gradient(0deg, #e2e5e8 0%, #a5a7a9 100%);
+}
+
+.form-container form {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.form-container form .title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+
+.form-container form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+label {
+    font-weight: 500;
+}
+.dropdesign{
+    border-bottom: none;
+}
+/* .form-container form button {
+    border: 1px solid black;
+    border-radius: 0;
+    background-color: #000;
+    color: white;
+    width: 250px;
+} */
+/* Login Form Design */
+.form-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    flex-direction: column;
+    background-color: #ffdee9;
+    background-image: linear-gradient(0deg, #e2e5e8 0%, #a5a7a9 100%);
+}
+form.login {
+    width: 30%;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+.socialIcons {
+    text-align: center;
+    margin: 2px;
+}
+
+
+.form-cont label,input {
+    display: block;
+}
+.Forget{
+    text-align: end;
+    color: rgb(57, 57, 157);
+    margin-bottom: 0px 0px;
+    cursor: pointer;
+}
+.Forget:hover{
+    color: rgb(122, 122, 187);
+}
+
+.form-cont input {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-cont form button {
+    background: #1AAC83;
+    border: 0;
+    color: #fff;
+    padding: 2%;
+    font-family: "Poppins";
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5%;
+}
+.form-cont form button:hover{
+    background: #25ca9b;
+}
+.google {
+    cursor: pointer;
+}
+
+.but {
+    padding: 2%;
+    width: 100px;
+}
+
+
+
+.blue-link {
+    text-decoration: none;
+    color: #333;
+}

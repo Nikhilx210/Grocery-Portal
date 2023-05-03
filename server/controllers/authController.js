@@ -3,28 +3,31 @@ import userModel from "../models/userModel.js";
 import JWT from "jsonwebtoken"
 const registerController=async(req,res)=>{
     try {
-        const {name,email,password,phone,address}=req.body;
+        const {name,email,password,phone,address,answer}=req.body;
         //validation
         if(!name){
-            return res.send({error:'Name is Required'})
+            return res.send({message:'Name is Required'})
         }
         if(!email){
-            return res.send({error:'Email is Required'})
+            return res.send({message:'Email is Required'})
         }
         if(!password){
-            return res.send({error:'Password is Required'})
+            return res.send({message:'Password is Required'})
         }
         if(!phone){
-            return res.send({error:'Phone No is Required'})
+            return res.send({message:'Phone No is Required'})
         }
         if(!address){
-            return res.send({error:'Address is Required'})
+            return res.send({message:'Address is Required'})
+        }
+        if(!answer){
+            return res.send({message:'Address is Required'})
         }
         //existing user
         const existinguser=await userModel.findOne({email})
         if(existinguser){
             return res.status(200).send({
-                success:true,
+                success:false,
                 message:"Already Register Please Login",
             })
         }
@@ -32,7 +35,7 @@ const registerController=async(req,res)=>{
         const hp=await hashPassword(password);
         console.log(hashPassword);
         // save
-        const user=await new userModel({name,email,phone,address,password:hp}).save();
+        const user=await new userModel({name,email,phone,address,password:hp,answer}).save();
         res.status(201).send({
             success:true,
             message:"User Register Successfully",
@@ -81,7 +84,8 @@ const loginController=async (req,res)=>{
                 name:user.name,
                 email:user.email,
                 phone:user.phone,
-                address:user.address
+                address:user.address,
+                role:user.role
             },
             token
         });
@@ -94,8 +98,54 @@ const loginController=async (req,res)=>{
         })
     }
 }
+
+//forget Password
+
+const forgetPasswordController= async (req,res)=>{
+    try {
+        const{email,answer,newPassword}=req.body;
+        if(!email){
+            res.status(500).send({
+                message:"Email is Required",
+            })
+        }
+        if(!answer){
+            res.status(500).send({
+                message:"Answer is Required",
+            })
+        }
+        if(!newPassword){
+            res.status(500).send({
+                message:"New Password is Required",
+            })
+        }
+        //check
+        const user= await userModel.findOne({email,answer});
+        //validation
+        if(!user){
+            return res.status(404).send({
+                success:false,
+                message:'Wrong email or answer'
+            })
+        }
+        const hash=await hashPassword(newPassword);
+        await userModel.findByIdAndUpdate(user._id,{password:hash})
+        res.status(200).send({
+            success:true,
+            message:"Password Reset Succesfully"
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:'Something Went Wrong',
+            error
+        })
+    }
+}
 //test Controller
 const testController=(req,res)=>{
     res.send("Hello There")
 }
-export {registerController,loginController,testController};
+export {registerController,loginController,testController,forgetPasswordController};
