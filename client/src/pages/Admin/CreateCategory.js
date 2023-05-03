@@ -34,9 +34,8 @@ const CreateCategory = () => {
       const {data}= await axios.post(`${process.env.REACT_APP_API}/api/v1/category/create-category`,{name});
       if(data?.success){
         getAllCategory();
-        setSelected(null);
-        setUpdatedValue("");
         toast.success(`${name} Category is Created`)
+        setSelected(null)
       }else{
         toast.error(data.message);
       }
@@ -45,12 +44,11 @@ const CreateCategory = () => {
        toast.error("Something Went Wrong")
     }
   }
-  const handleDelete =async ()=>{
+  const handleDelete =async (id)=>{
     try {
-      const {data}= await axios.delete(`${process.env.REACT_APP_API}/api/v1/category/delete-category/${selected}`);
+      const {data}= await axios.delete(`${process.env.REACT_APP_API}/api/v1/category/delete-category/${id}`);
       if(data?.success){
         getAllCategory();
-        setSelected(null);
         toast.success(`Category is Deleted`)
       }else{
         toast.error(data.message);
@@ -102,7 +100,7 @@ const CreateCategory = () => {
                     return <tr key={d._id}>
                       <td>{d.name}</td>
                       <td><button className='btn btn-primary ms-2' onClick={()=>{setVisible(true);setSelected(d._id);setUpdatedValue(d.name)}}>Edit</button>
-                      <button className='btn btn-danger ms-2' onClick={()=>{setSelected(d._id);handleDelete();}}>Delete</button>
+                      <button className='btn btn-danger ms-2' onClick={()=>{handleDelete(d._id);}}>Delete</button>
                       </td>
                     </tr>
                   })}
