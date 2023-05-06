@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import i from '../../images/Icon.png'
 import { useAuth } from '../../context/Auth'
 import { toast } from 'react-hot-toast'
+import SearchInput from '../Form/SearchInput'
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const handleLogout = () => {
@@ -24,7 +25,8 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <img src={i}></img><Link to="/" className="navbar-brand" style={{ textTransform: "none" }} >BuyFresh</Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+                <SearchInput/>
+              <li className="nav-item" style={{marginLeft:"3%"}}>
                 <NavLink to="/" className="nav-link" aria-current="page" >Home</NavLink>
               </li>
               <li className="nav-item">

@@ -20,12 +20,16 @@ import Profile from './pages/user/Profile';
 import Orders from './pages/user/Orders';
 import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';
+import Search from './pages/Search';
+import ProductDetails from './pages/ProductDetails';
 function App() {
   const [auth,setAuth]=useAuth();
   return (
     <>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/search' element={<Search />} />
+        <Route path='/product/:slug' element={<ProductDetails />} />
         <Route path='/forget-password' element={<ForgetPassword/>} />
         <Route path='/register' element={!auth?.user ? <Register /> : <Navigate to="/" />} />
         <Route path='/login' element={!auth?.user ? <Login /> : <Navigate to="/" />} />
