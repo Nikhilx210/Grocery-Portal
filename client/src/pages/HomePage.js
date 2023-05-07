@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Checkbox,Radio } from 'antd';
 import { prices } from '../components/Prices';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/cart';
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [Categories, setCategories] = useState([]);
@@ -13,6 +14,7 @@ const HomePage = () => {
   const[total,setTotal]=useState(0);
   const[page,setPage]=useState(1);
   const[loading,setLoading]=useState(false);
+  const[cart,setCart]=useCart();
   const navigate=useNavigate();
   const getAllProducts = async () => {
     try {
@@ -129,7 +131,7 @@ const HomePage = () => {
         <div className='col-md-9'>
           <h1 className='text-center'>All Products</h1>
           <div className='d-flex flex-wrap' >
-            {products.map((product) => {
+            {products?.map((product) => {
               return <div className="card m-2" key={product.id} style={{ width: '18rem' }} >
                 <img src={`${process.env.REACT_APP_API}/api/v1/product/product-image/${product._id}`} className="card-img-top" alt={product.name} />
                 <div className="card-body">
@@ -137,7 +139,11 @@ const HomePage = () => {
                   <p className="card-text">{product.description.substring(0,30)}</p>
                   <p className="card-text">{`Rs ${product.price}`}</p>
                   <button className="btn btn-primary ms-1" onClick={()=>navigate(`/product/${product.slug}`)}>More Details</button>
-                  <button className="btn btn-secondary ms-2">ADD To CART</button>
+                  <button className="btn btn-secondary ms-2" onClick={()=>{
+                    setCart([...cart,product]);
+                    localStorage.setItem("cart",JSON.stringify([...cart,product]));
+                    toast.success("Product Added to Cart");
+                  }}>ADD To CART</button>
                 </div>
               </div>
             })}
