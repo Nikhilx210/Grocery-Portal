@@ -22,6 +22,8 @@ import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';
 import Search from './pages/Search';
 import ProductDetails from './pages/ProductDetails';
+import CategoryProduct from './pages/CategoryProduct';
+import CartPage from './pages/CartPage';
 function App() {
   const [auth,setAuth]=useAuth();
   return (
@@ -29,7 +31,9 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/cart' element={<CartPage />} />
         <Route path='/product/:slug' element={<ProductDetails />} />
+        <Route path='/category/:slug' element={<CategoryProduct />} />
         <Route path='/forget-password' element={<ForgetPassword/>} />
         <Route path='/register' element={!auth?.user ? <Register /> : <Navigate to="/" />} />
         <Route path='/login' element={!auth?.user ? <Login /> : <Navigate to="/" />} />

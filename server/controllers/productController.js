@@ -1,6 +1,7 @@
 import slugify from "slugify";
 import productModel from "../models/productModel.js";
 import fs from "fs";
+import categoryModel from "../models/categoryModel.js";
 export const createProductController = async (req, res) => {
   try {
     const { name, description, price, category, quantity, shipping } =
@@ -272,6 +273,26 @@ export const relatedProductController =async (req,res)=>{
     res.status(400).send({
       success: false,
       message: "Error in Searching Similar Product",
+      error
+    });
+  }
+}
+//product category controller
+export const productCategoryController =async(req,res)=>{
+  try {
+    const{slug}=req.params;
+    const category=await categoryModel.findOne({slug});
+    const product=await productModel.find({category}).populate("category");
+    res.status(200).send({
+      success:true,
+      product,
+      category
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in Retrieving Category Wise Product",
       error
     });
   }
