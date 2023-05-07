@@ -20,7 +20,7 @@ const AuthProvider=({children})=>{
             })
         }
         //eslint-disable-next-line
-    },[])
+    },[auth?.token])
     return (
         <AuthContext.Provider value={[auth,setAuth]}>
             {children}
