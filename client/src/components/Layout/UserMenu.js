@@ -5,9 +5,9 @@ const UserMenu = () => {
     <>
             <div className='text-center'>
                 <div className="list-group">
-                    <h4>Dashboard</h4>
-                    <NavLink to="/dashboard/user/profile" className="list-group-item list-group-item-action">Profile</NavLink>
-                    <NavLink to="/dashboard/user/orders" className="list-group-item list-group-item-action">Orders</NavLink>
+                    <h4 style={{color: "#0a5c5f"}}>Dashboard</h4>
+                    <NavLink to="/dashboard/user/profile" className="list-group-item list-group-item-action" style={{color: "#0a5c5f"}}>Profile</NavLink>
+                    <NavLink to="/dashboard/user/orders" className="list-group-item list-group-item-action" style={{color: "#0a5c5f"}}>Orders</NavLink>
                 </div>
             </div>
 
