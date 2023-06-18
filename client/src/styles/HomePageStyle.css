@@ -1,0 +1,92 @@
+.banner-img {
+  margin-top: 60px;
+}
+
+.home-page h1 {
+  color: gray;
+}
+
+.home-page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-page .card {
+  background-color: rgba(110, 233, 190, 0.097);
+  width: 18rem;
+  border-radius: 10px;
+}
+
+.home-page .card-body{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.home-page .card-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-page .card-price {
+  color: green;
+  font-weight: bold;
+}
+
+.home-page button {
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+
+}
+
+.home-page .card-text {
+  color: rgb(90, 89, 89);
+  
+}
+
+
+.home-page .card:hover {
+  transform: scale(1.05);
+}
+
+.home-page .card-img-top {
+  height: 200px;
+  width: 120px;
+}
+
+/* ==================
+  filters
+  ============== */
+.filters h4 {
+  margin-top: 100px;
+  color: gray !important;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.337);
+}
+
+.ant-checkbox-wrapper:first-of-type {
+  margin-left: 8px;
+}
+
+.ant-checkbox-wrapper {
+  margin: 2px;
+}
+
+.ant-radio-wrapper {
+  margin-bottom: 5px !important;
+  margin-left: 10px;
+}
+
+.filters button {
+  background-color: #7c7d7d;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.loadmore {
+  color: green;
+  font-weight: bold;
+  font-size: 20px !important;
+}
