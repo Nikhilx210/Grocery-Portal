@@ -86,9 +86,9 @@ const UpdateProduct = () => {
     //Handle Delete
     const handleDelete = async () => {
         try {
-            let answer=window.prompt("Are you Sure You want to delete this Product ?")
-            console.log("Apurv"+answer)
-            if(!answer){
+            let answer = window.prompt("Are you Sure You want to delete this Product ?")
+            console.log("Apurv" + answer)
+            if (!answer) {
                 return
             }
             const { data } = axios.delete(`${process.env.REACT_APP_API}/api/v1/product/delete-product/${id}`);
@@ -111,9 +111,15 @@ const UpdateProduct = () => {
                     <div className='col-md-3'>
                         <AdminMenu />
                     </div>
-                    <div className='col-md-9 '>
+                    <div className='col-md-7 text-center' style={{
+                        backgroundColor: 'white',
+                        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
+                        padding: '30px',
+                        borderRadius: '20px',
+                        marginLeft: '4%'
+                    }}>
                         <h1>Update Product</h1>
-                        <div className='m-1 w-75'>
+                        <div >
                             <Select bordered={false} placeholder="Select a category"
                                 size='large' showSearch
                                 className='form-select mb-3' onChange={(value) => { setCategory(value) }} value={category}>

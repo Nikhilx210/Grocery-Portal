@@ -13,10 +13,10 @@ const Dashboard = () => {
             <UserMenu/>
           </div>
           <div className='col-md-9'>
-            <div className='card w-75 p-3'>
-              <h3>Name : {auth?.user?.name}</h3>
-              <h3>Email : {auth?.user?.email}</h3>
-              <h3>Contact : {auth?.user?.phone}</h3>
+            <div className='card w-75 p-3' style={{background: "#74cdcd" }}>
+              <h3 style={{color: "#0a5c5f"}}>Name : {auth?.user?.name}</h3>
+              <h3 style={{color: "#0a5c5f"}}>Email : {auth?.user?.email}</h3>
+              <h3 style={{color: "#0a5c5f"}}>Contact : {auth?.user?.phone}</h3>
             </div>
           </div>
         </div>

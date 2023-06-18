@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import '../../styles/AuthStyle.css'
+import goog from '../../images/google.png'
 const Register = () => {
   const [Fname, setFname] = useState('');
   const [Lname, setLname] = useState('');
@@ -17,10 +18,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const name = Fname +" "+ Lname;
-      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, { name, email, password, address, phone ,answer })
+      const name = Fname + " " + Lname;
+      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, { name, email, password, address, phone, answer })
       if (res && res.data.success) {
-        // toast.success(res.data.message);
+        toast.success(res.data.message);
         navigate('/login');
       } else {
         toast.error(res.data.message);
@@ -30,12 +31,19 @@ const Register = () => {
       toast.error('Something went wrong');
     }
   }
+  const googleAuth = async () => {
+    window.open(
+      `${process.env.REACT_APP_API}/api/v1/auth/google/callback`,
+      "_self"
+    );
+      
+  };
   return (
     <Layout title="Register -BuyFresh">
       <div className='form-container'>
         <form className="row g-3" onSubmit={handleSubmit}>
-          <div className="title" style={{textAlign:'center'}}>
-          <h1>Sign Up</h1>
+          <div className="title" style={{ textAlign: 'center' }}>
+            <h1>Sign Up</h1>
           </div>
           <div className="col-md-6">
             <label htmlFor="inputFName" className="form-label">First Name :</label>
@@ -79,7 +87,7 @@ const Register = () => {
               setAddress(event.target.value);
             }} value={address} required className="form-control" id="inputAddress" placeholder="Address" />
           </div>
-          
+
           {/* <div className="col-md-6">
             <label htmlFor="inputCity" className="form-label">City</label>
             <input type="text" className="form-control" id="inputCity" />
@@ -95,11 +103,16 @@ const Register = () => {
             <label htmlFor="inputZip" className="form-label">Zip</label>
             <input type="text" className="form-control" id="inputZip" />
           </div> */}
-          <div className="col-12" style={{textAlign:'center'}}>
-            <button type="submit" style={{padding:'8px',width:'15%',fontSize:"18px"}} className="btn btn-primary">Sign in</button>
+          <div className="col-12" style={{ textAlign: 'center' }}>
+            <button type="submit" style={{ padding: '8px', width: '15%', fontSize: "18px" ,background:'#1AAC83'}} className="btn btn-primary">Sign in</button>
           </div>
+          <div className="socialIcons">
+          <p style={{ marginBottom: "2%" }}>----Or----</p>
+          <div>
+          <img src={goog} className="google" alt="Google" onClick={googleAuth}/>
+          </div>
+        </div>
         </form>
-
       </div>
     </Layout>
   )
