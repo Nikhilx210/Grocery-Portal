@@ -65,9 +65,15 @@ const CreateProduct = () => {
           <div className='col-md-3'>
             <AdminMenu />
           </div>
-          <div className='col-md-9'>
-            <h1>Create Product</h1>
-            <div className='m-1 w-75'>
+          <div className='col-md-8 d-flex-column align-items-center justify-content-center text-center' style={{
+            backgroundColor: 'white',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
+            padding: '30px',
+            borderRadius: '20px',
+            marginLeft:'4%'
+          }}>
+            <h1 style={{ color: "#0a5c5f" }}>Create Product</h1>
+            <div >
               <Select bordered={false} placeholder="Select a category"
                 size='large' showSearch
                 className='form-select mb-3' onChange={(value) => { setCategory(value) }}>

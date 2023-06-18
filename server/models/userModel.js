@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import findOrCreate from 'mongoose-findorcreate'
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -13,24 +13,24 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:true,
+        // required:true,
     },
     phone:{
         type:String,
-        required:true,
+        // required:true,
     },
     address:{
         type:String,
-        required:true,
+        // required:true,
     },
     answer:{
         type:String,
-        required:true,
+        // required:true,
     },
     role:{
         type:Number,
         default:0
     }
 },{timestamps:true})
-
+userSchema.plugin(findOrCreate);
 export default mongoose.model('users',userSchema);

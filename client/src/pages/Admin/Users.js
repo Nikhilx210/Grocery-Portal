@@ -10,7 +10,7 @@ const Users = () => {
             <AdminMenu/>
           </div>
           <div className='col-md-9'>
-            <h1>User</h1>
+            <h1 className='text-center' style={{color: "#0a5c5f"}}>User</h1>
           </div>
         </div>
       </div>

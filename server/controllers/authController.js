@@ -1,4 +1,5 @@
 import { comparePassword, hashPassword } from "../helpers/authHelper.js";
+import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import JWT from "jsonwebtoken"
 const registerController=async(req,res)=>{
@@ -172,4 +173,51 @@ const updateProfileController =async(req,res)=>{
         })
     }
 }
-export {registerController,loginController,testController,forgetPasswordController,updateProfileController};
+//orders
+const getOrdersController =async(req,res)=>{
+    console.log("hello")
+    try {
+        const orders= await orderModel.find({buyer:req.user._id}).populate('products','-image').populate("buyer","name");
+        res.json(orders);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:'Error while Retrieving Orders',
+            error
+        })
+    }
+}
+//all orders
+const getAllOrdersController =async(req,res)=>{
+    console.log("hello")
+    try {
+        const orders= await orderModel.find({}).populate('products','-image').populate("buyer","name").sort({createdAt:"-1"});
+        res.json(orders);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:'Error while Retrieving Orders',
+            error
+        })
+    }
+}
+const orderStatusController = async(req,res)=>{
+    try {
+        const{orderId}=req.params
+        const{status}=req.body
+        console.log("Hello"+orderId)
+        console.log("Buy"+status)
+        const orders=await orderModel.findByIdAndUpdate(orderId,{status},{new:true});
+        res.json(orders);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:'Error while Updating Status',
+            error
+        })
+    }
+}
+export {registerController,loginController,testController,forgetPasswordController,updateProfileController,getOrdersController,getAllOrdersController,orderStatusController};

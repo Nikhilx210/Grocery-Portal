@@ -4,7 +4,7 @@ import Layout from '../components/Layout/Layout'
 const Policy = () => {
   return (
     <Layout>
-        <h1>Policy Page</h1>
+        <h1 className='text-center' style={{color:"#468484"}}>Policy Page</h1>
     </Layout>
   )
 }
