@@ -12,7 +12,7 @@ Welcome to the MERN Stack Grocery Portal project! This repository showcases a co
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/yourusername/mern-grocery-portal.git`
+1. Clone the repository: `https://github.com/Nikhilx210/Grocery-Portal.git`
 2. Navigate to the project directory: `cd mern-grocery-portal`
 3. Install dependencies for the server: `npm install`
 4. Navigate to the client directory: `cd client`
