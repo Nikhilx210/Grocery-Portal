@@ -32,6 +32,6 @@ Welcome to the MERN Stack Grocery Portal project! This repository showcases a co
 Feel free to connect with me if you have any questions or feedback regarding this project:
 
 - Email: nikhilrathee736@gmail.com
-- LinkedIn: www.linkedin.com/in/nikhil-rathee-925166273
+- LinkedIn: www.linkedin.com/in/nikhilrathee210
 
 Happy coding!
